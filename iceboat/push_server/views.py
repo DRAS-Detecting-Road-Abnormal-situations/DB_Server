@@ -16,3 +16,7 @@ def get_image(request):
         print(image,name)
         render(request, '알림화면/push.html')
     return  JsonResponse({'code': '0000', 'msg': '이미지 받았습니다.'}, status=200)
+
+@csrf_exempt
+def start(request):
+    return render(request,'알림화면/push.html')
