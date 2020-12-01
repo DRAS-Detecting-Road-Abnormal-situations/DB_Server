@@ -15,11 +15,10 @@ def get_image(request):
         image_type = request.POST.get('type')
         form = ImageData( image = image, name=name)
         form.save()
-        print(image,name)
+        print(image, name, image_type)
         render(request, '알림화면/push.html')
         if(image_type == 'acc'):
             send_to_firebase_cloud_messaging('acc', name)
-
     return  JsonResponse({'code': '0000', 'msg': '이미지 받았습니다.'}, status=200)
 
 def send_to_firebase_cloud_messaging(type, image_name):
@@ -36,8 +35,8 @@ def send_to_firebase_cloud_messaging(type, image_name):
                 'body':'경로에 교통사고가 났습니다. 주의하세요', 
                 'image_name' : image_name,
                 'type' : 'acc',
-                'cctv_id_x' : 37.570226,
-                'cctv_id_y' : 126.976920,
+                'cctv_id_x' : '37.570226',
+                'cctv_id_y' : '126.976920',
             },
             token=registration_token,
         )
@@ -50,8 +49,8 @@ def send_to_firebase_cloud_messaging(type, image_name):
                 'body':'경로의 도로에 장애물이 있습니다. 주의하세요', 
                 'image_name' : image_name,
                 'type' : 'ob',
-                'cctv_id_x' : 37.569834,
-                'cctv_id_y' : 127.002028,
+                'cctv_id_x' : '37.569834',
+                'cctv_id_y' : '127.002028',
             },
             token=registration_token,
         )
