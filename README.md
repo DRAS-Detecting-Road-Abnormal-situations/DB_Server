@@ -1,7 +1,4 @@
-# Backend
-### 구성
- - Accident Detection server
- - Obstacle Detection server
- - DB server
+# DB_Server
+- DL 서버에서 이상현상(교통사고, 장애물)을 감지하였을 떄 전달 온 이상 현상 이미지를 DB에 저장하여 나중에 Web_application에서 사용할 수 있도록 도와주는 서버.
 
  
